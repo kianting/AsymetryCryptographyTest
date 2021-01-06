@@ -41,6 +41,18 @@ public class GenerateKeys {
         return this.publicKey;
     }
 
+    public String getPublicKeyBase64() throws Exception {
+        StringWriter sw = new StringWriter();
+      	 sw.write((new String(enc.encode(getPublicKey().getEncoded()))));
+      	 return sw.toString();
+    }
+    
+    public String getPrivateKeyBase64() throws Exception {
+     StringWriter sw = new StringWriter();
+   	 sw.write((new String(enc.encode(getPrivateKey().getEncoded()))));
+   	 return sw.toString();
+   }
+    
     public String getPublicKeyPEM() throws Exception {
         StringWriter sw = new StringWriter();
       	 sw.write(ConstantConfig.BEGIN_PUBLIC_KEY + "\n");
@@ -62,8 +74,10 @@ public class GenerateKeys {
         try {
             gk = new GenerateKeys(1024);
             gk.createKeys();
-            System.out.println("Private Key:" + gk.getPublicKeyPEM());
-            System.out.println("Public Key:" + gk.getPrivateKeyPEM());            
+            System.out.println("Private Key PEM:\n" + gk.getPublicKeyPEM());
+            System.out.println("Public Key PEM:\n" + gk.getPrivateKeyPEM()); 
+            System.out.println("Private Key BASE64:\n" + gk.getPublicKeyBase64());
+            System.out.println("Public Key BASE64:\n" + gk.getPrivateKeyBase64());             
         } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
             System.err.println(e.getMessage());
         } catch (Exception e) {

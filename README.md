@@ -10,4 +10,9 @@ Now if you cut and paste the public and private key into the [JWT.io screen](htt
 
 ![JWT IO Demo](./img/JWTIo.png "JWT Io Demo") 
 
+If you want to just use the base 64 version and not the PEM format of the public and private key just use the following methods.
 
+```
+GenerateKeys.getPublicKeyBase64()
+GenerateKeys.getPrivateKeyBase64()
+```
